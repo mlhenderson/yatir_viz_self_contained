@@ -63,7 +63,9 @@ def three_panel_quadmesh_compare_vertical_var(ds, varname, cmap='RdBu'):
                                            x='XLONG',
                                            y='XLAT',
                                            z=agl_var,
-                                           title='WRF height AGL')
+                                           title='WRF height AGL').opts(
+                                               frame_width=200,
+                                               frame_height=200)
         return(agl_contour)
 
     @pn.depends(hour_select, z_select)
@@ -87,7 +89,8 @@ def three_panel_quadmesh_compare_vertical_var(ds, varname, cmap='RdBu'):
                                   z=varname,
                                   title='Yatir dry',
                                   clim=(vmin, vmax),
-                                  cmap=cmap)
+                                  cmap=cmap).opts(frame_width=200,
+                                                  frame_height=200)
         return(qm)
 
     @pn.depends(hour_select, z_select)
@@ -104,7 +107,8 @@ def three_panel_quadmesh_compare_vertical_var(ds, varname, cmap='RdBu'):
                                   z=varname,
                                   title='Yatir wet',
                                   cmap=cmap,
-                                  clim=(vmin, vmax))
+                                  clim=(vmin, vmax)).opts(frame_width=200,
+                                                          frame_height=200)
         return(qm)
 
     @pn.depends(hour_select, z_select)
@@ -122,7 +126,9 @@ def three_panel_quadmesh_compare_vertical_var(ds, varname, cmap='RdBu'):
                                   #clim=(vmin, vmax),
                                   symmetric=True,
                                   cmap='RdBu',
-                                  title='Yatir dry - Yatir wet')
+                                  title='Yatir dry - Yatir wet').opts(
+                                      frame_width=200,
+                                      frame_height=200)
         return(qm)
 
     #main_title = '## ' + ds[varname].long_name
@@ -164,7 +170,8 @@ def three_panel_quadmesh_compare_surface_var(ds, varname, cmap='RdBu'):
                                   z=varname,
                                   title='Yatir Dry',
                                   clim=(vmin, vmax),
-                                  cmap=cmap)
+                                  cmap=cmap).opts(frame_width=200,
+                                                  frame_height=200)
         return(qm)
 
     @pn.depends(hour_select)
@@ -179,7 +186,8 @@ def three_panel_quadmesh_compare_surface_var(ds, varname, cmap='RdBu'):
                                   z=varname,
                                   title='Yatir wet',
                                   cmap=cmap,
-                                  clim=(vmin, vmax))
+                                  clim=(vmin, vmax)).opts(frame_width=200,
+                                                          frame_height=200)
         return(qm)
 
     @pn.depends(hour_select)
@@ -195,7 +203,9 @@ def three_panel_quadmesh_compare_surface_var(ds, varname, cmap='RdBu'):
                                   #clim=(vmin, vmax),
                                   symmetric=True,
                                   cmap='RdBu',
-                                  title='Yatir dry - Yatir wet')
+                                  title='Yatir dry - Yatir wet').opts(
+                                      frame_width=200,
+                                      frame_height=200)
         return(qm)
 
     # main_title = '## ' + ds[varname].long_name
