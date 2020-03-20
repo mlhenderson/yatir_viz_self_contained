@@ -1,4 +1,4 @@
-name: yatir_viz
+#name: yatir_viz
 channels:
   - conda-forge
   - defaults
