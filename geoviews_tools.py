@@ -53,6 +53,9 @@ def merge_yatir_fluxes_landuse(fname_ctl='ctl_run_d03_diag_latest.nc',
     elif 'cori' in socket.gethostname():
         cscratch_path = os.path.join('/', 'global', 'cscratch1', 'sd',
                                      'twhilton', 'yatir_output_collected')
+    else:
+        cscratch_path = '.'
+
     ctlday = WRF_daily_daylight_avg(os.path.join(cscratch_path, fname_ctl))
     ytrday = WRF_daily_daylight_avg(os.path.join(cscratch_path, fname_yatir))
     # landuse_data = yatir_landuse_to_xarray()
