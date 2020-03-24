@@ -40,13 +40,7 @@ def merge_yatir_fluxes_landuse(fname_ctl='ctl_run_d03_diag_latest.nc',
                                fname_yatir='yatir_run_d03_diag_latest.nc'):
     """merge WRF fluxes and landuse into single xarray dataset
     """
-    if 'MacBook' in socket.gethostname():
-        cscratch_path = os.path.join(os.path.join('/', 'Users', 'tim',
-                                                  'work', 'Data',
-                                                  'SummenWRF', 'yatir'))
-    elif 'cori' in socket.gethostname():
-        cscratch_path = os.path.join('/', 'global', 'cscratch1', 'sd',
-                                     'twhilton', 'yatir_output_collected')
+    cscratch_path = os.getcwd()
     ctlday = WRF_daily_daylight_avg(os.path.join(cscratch_path, fname_ctl))
     ytrday = WRF_daily_daylight_avg(os.path.join(cscratch_path, fname_yatir))
     ctlday, ytrday = (this_dataset.assign(
@@ -118,17 +112,10 @@ def yatir_landuse_to_xarray():
       dict keyed by ['d02', 'd03']; values are xarray.DataSet objects
       containing land use data concatenated on new dimension WRFrun
     """
-    if 'MacBook' in socket.gethostname():
-        dir_path = os.path.join('/', 'Users', 'tim', 'work',
-                                'Data', 'SummenWRF', 'yatir')
-    elif 'cori' in socket.gethostname():
-        dir_path = os.path.join('/', 'global', 'cscratch1', 'sd',
-                                'twhilton', 'yatir_land_use')
-
     dict_runs = {}
     for WRFdomain in ['d02', 'd03']:
         dict_runs[WRFdomain] = xr.concat((xr.open_dataset(
-            os.path.join(dir_path, 'land_data_{run}_{dom}.nc').format(
+            os.path.join(os.getcwd(), 'land_data_{run}_{dom}.nc').format(
                 run=WRFrun, dom=WRFdomain)).squeeze()
                                           for WRFrun in ['ctl', 'ytr']),
                                          dim='WRFrun')
