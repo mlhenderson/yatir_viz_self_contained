@@ -9,6 +9,7 @@ dependencies:
   - jupyter
   - xarray
   - panel
+  - param=1.9.2
   - pip
   - python=3.7
   - netCDF4  #required by xarray but not automatically installed
