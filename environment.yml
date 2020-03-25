@@ -12,6 +12,7 @@ dependencies:
   - pip
   - python=3.7
   - netCDF4  #required by xarray but not automatically installed
+  - voila
 
 
 prefix: /global/homes/t/twhilton/.conda/envs/yatir_viz_minimal
